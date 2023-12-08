@@ -10,29 +10,32 @@ Game::Game()
 	turn = 1;
 }
 
+
+// shatriin hulug deeer shatruudaa bairluulah
 void Game::setInitialPieces(PieceColor color)
 {
 	int firstRow = (color==PieceColor::WHITE)? board->MIN_ROW_INDEX : board->MAX_ROW_INDEX;
 	int secondRow = (color==PieceColor::WHITE)? board->MIN_ROW_INDEX+1 : board->MAX_ROW_INDEX-1;
 	int firstCol = board->MIN_COL_INDEX;
-	/* PAWN */
+
+	/* HVV BAIRLUULAH */
 	for(int col = firstCol; col<=board->MAX_COL_INDEX; col++)
 	{
-		board->getSquare(secondRow, col)->occupySquare(new Piece(PieceType::PAWN, color));
+		board->getSquare(secondRow, col)->occupySquare(new Piece(PieceType::HVV, color));
 	}
-	/* ROOK */
-	board->getSquare(firstRow, firstCol)->occupySquare(new Piece(PieceType::ROOK, color));
-	board->getSquare(firstRow, firstCol+7)->occupySquare(new Piece(PieceType::ROOK, color));
-	/* KNIGHT */
-	board->getSquare(firstRow, firstCol+1)->occupySquare(new Piece(PieceType::KNIGHT, color));
-	board->getSquare(firstRow, firstCol+6)->occupySquare(new Piece(PieceType::KNIGHT, color));
-	/* BISHOP */
-	board->getSquare(firstRow, firstCol+2)->occupySquare(new Piece(PieceType::BISHOP, color));
-	board->getSquare(firstRow, firstCol+5)->occupySquare(new Piece(PieceType::BISHOP, color));
-	/* QUEEN */
-	board->getSquare(firstRow, firstCol+3)->occupySquare(new Piece(PieceType::QUEEN, color));
-	/* KING */
-	board->getSquare(firstRow, firstCol+4)->occupySquare(new Piece(PieceType::KING, color));
+	/* TEREG BAIRLUULAH */
+	board->getSquare(firstRow, firstCol)->occupySquare(new Piece(PieceType::TEREG, color));
+	board->getSquare(firstRow, firstCol+7)->occupySquare(new Piece(PieceType::TEREG, color));
+	/* MORI  */
+	board->getSquare(firstRow, firstCol+1)->occupySquare(new Piece(PieceType::MORI, color));
+	board->getSquare(firstRow, firstCol+6)->occupySquare(new Piece(PieceType::MORI, color));
+	/* TEMEE */
+	board->getSquare(firstRow, firstCol+2)->occupySquare(new Piece(PieceType::TEMEE, color));
+	board->getSquare(firstRow, firstCol+5)->occupySquare(new Piece(PieceType::TEMEE, color));
+	/* BERS */
+	board->getSquare(firstRow, firstCol+3)->occupySquare(new Piece(PieceType::BERS, color));
+	/* NOYON */
+	board->getSquare(firstRow, firstCol+4)->occupySquare(new Piece(PieceType::NOYON, color));
 }
 
 std::stack<Move> Game::getAllLog()

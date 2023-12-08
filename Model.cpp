@@ -24,6 +24,7 @@ Model::Model(std::string objFilePath)
 	obj.open(objFilePath);
 	if(obj.is_open())
 	{
+	    std::cout<<"file neegdsen !!!"<<std::endl;
 		while(getline(obj, input))
 		{
 			split = splitString(input, ' ');
@@ -66,6 +67,8 @@ Model::Model(std::string objFilePath)
                 }
             }
 		}
+	}else{
+	    std::cout<<"Cant open file";
 	}
     sz = position_texture_normal.size() / 8;
 }

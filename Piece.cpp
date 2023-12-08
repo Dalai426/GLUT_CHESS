@@ -1,6 +1,7 @@
 
 #include "Piece.h"
 
+// shatriin elemntvvd
 Piece::Piece(PieceType pType, PieceColor pColor)
 {
 	type = pType;

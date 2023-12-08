@@ -59,12 +59,12 @@ GLfloat     screen_ratio, zoomOut = 2;
 /**
     Model-ooo achaallah
 */
-Model   Pawn("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Pawn.obj");
-Model   Rook("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Rook.obj");
-Model   Knight("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Knight.obj");
-Model   Bishop("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Bishop.obj");
-Model   King("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\King.obj");
-Model   Queen("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Queen.obj");
+Model   HVV("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Pawn.obj");
+Model   TEREG("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Rook.obj");
+Model   MORI("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Knight.obj");
+Model   TEMEE("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Bishop.obj");
+Model   NOYON("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\King.obj");
+Model   BERS("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Queen.obj");
 
 
 /**
@@ -348,7 +348,7 @@ void drawValidMoves()
 }
 
 /**
-    Drawing Chess Pieces in Board
+    Nvdnvvd deer shatriin hulgvvdiig zurah heseg
 */
 void drawChessPieces()
 {
@@ -377,12 +377,12 @@ void drawChessPieces()
                     }
                     switch(chess->getPiece(row, col)->getType())
                     {
-                        case PieceType::PAWN: Pawn.Draw(); break;
-                        case PieceType::ROOK: Rook.Draw(); break;
-                        case PieceType::KNIGHT: Knight.Draw(); break;
-                        case PieceType::BISHOP: Bishop.Draw(); break;
-                        case PieceType::QUEEN: Queen.Draw(); break;
-                        case PieceType::KING: King.Draw(); break;
+                        case PieceType::HVV: HVV.Draw(); break;
+                        case PieceType::TEREG: TEREG.Draw(); break;
+                        case PieceType::MORI: MORI.Draw(); break;
+                        case PieceType::TEMEE: TEMEE.Draw(); break;
+                        case PieceType::BERS: BERS.Draw(); break;
+                        case PieceType::NOYON: NOYON.Draw(); break;
                     }
                 glPopMatrix();
             }
@@ -629,7 +629,7 @@ void keyFunction(unsigned char key, int x, int y)
                     if(chess->move(selectedRow, selectedCol, moveToRow, moveToCol))
                     {
 						Piece* movedPiece = chess->getPiece(moveToRow, moveToCol);
-						if(movedPiece->getType() == PieceType::PAWN &&
+						if(movedPiece->getType() == PieceType::HVV &&
 							((movedPiece->getColor() == PieceColor::BLACK && moveToRow == chess->getBoard()->MIN_ROW_INDEX)
 							|| moveToRow == chess->getBoard()->MAX_ROW_INDEX))
 						{
@@ -666,7 +666,7 @@ void keyFunction(unsigned char key, int x, int y)
 		case 'q': case 'Q':
 			if(needPromote)
 			{
-				chess->promote(moveToRow, moveToCol, PieceType::QUEEN);
+				chess->promote(moveToRow, moveToCol, PieceType::BERS);
 				endOfTurn();
 				break;
 			}
@@ -674,7 +674,7 @@ void keyFunction(unsigned char key, int x, int y)
 		case 'r': case 'R':
 			if(needPromote)
 			{
-				chess->promote(moveToRow, moveToCol, PieceType::ROOK);
+				chess->promote(moveToRow, moveToCol, PieceType::TEREG);
 				endOfTurn();
 				break;
 			}
@@ -682,7 +682,7 @@ void keyFunction(unsigned char key, int x, int y)
 		case 'b': case 'B':
 			if(needPromote)
 			{
-				chess->promote(moveToRow, moveToCol, PieceType::BISHOP);
+				chess->promote(moveToRow, moveToCol, PieceType::TEMEE);
 				endOfTurn();
 				break;
 			}
@@ -690,7 +690,7 @@ void keyFunction(unsigned char key, int x, int y)
 		case 'k': case 'K':
 			if(needPromote)
 			{
-				chess->promote(moveToRow, moveToCol, PieceType::KNIGHT);
+				chess->promote(moveToRow, moveToCol, PieceType::MORI);
 				endOfTurn();
 				break;
 			}

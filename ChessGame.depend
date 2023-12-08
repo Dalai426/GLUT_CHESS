@@ -12,11 +12,11 @@
 	"PieceType.h"
 	"PieceColor.h"
 
-1701958865 c:\users\user\desktop\comgraphic\chessgame\piecetype.h
+1702047272 c:\users\user\desktop\comgraphic\chessgame\piecetype.h
 
 1701958843 c:\users\user\desktop\comgraphic\chessgame\piececolor.h
 
-1701958319 source:c:\users\user\desktop\comgraphic\chessgame\game.cpp
+1702049270 source:c:\users\user\desktop\comgraphic\chessgame\game.cpp
 	"Game.h"
 
 1701958335 c:\users\user\desktop\comgraphic\chessgame\game.h
@@ -48,7 +48,7 @@
 	"Piece.h"
 	"PieceColor.h"
 
-1701958394 source:c:\users\user\desktop\comgraphic\chessgame\gameplay.cpp
+1702051885 source:c:\users\user\desktop\comgraphic\chessgame\gameplay.cpp
 	<cstddef>
 	<cmath>
 	<iostream>
@@ -58,7 +58,7 @@
 	<cstddef>
 	"GameStatus.h"
 
-1701958291 source:c:\users\user\desktop\comgraphic\chessgame\model.cpp
+1702008418 source:c:\users\user\desktop\comgraphic\chessgame\model.cpp
 	<fstream>
 	<sstream>
 	<cstring>
@@ -945,14 +945,14 @@
 1701958434 source:c:\users\user\desktop\comgraphic\chessgame\move.cpp
 	"Move.h"
 
-1701958802 source:c:\users\user\desktop\comgraphic\chessgame\piece.cpp
+1702047247 source:c:\users\user\desktop\comgraphic\chessgame\piece.cpp
 	"Piece.h"
 
-1701958882 source:c:\users\user\desktop\comgraphic\chessgame\square.cpp
+1702046757 source:c:\users\user\desktop\comgraphic\chessgame\square.cpp
 	<cstddef>
 	"Square.h"
 
-1701995399 source:c:\users\user\desktop\comgraphic\chessgame\main.cpp
+1702008303 source:c:\users\user\desktop\comgraphic\chessgame\main.cpp
 	<bits/stdc++.h>
 	<GLUT/glut.h>
 	<GL/freeglut.h>

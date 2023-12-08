@@ -4,12 +4,18 @@
 
 enum class PieceType : int
 {
-	PAWN 	= 100,
-	ROOK 	= 500,
-	KNIGHT 	= 320,
-	BISHOP	= 333,
-	KING	= 1000000,
-	QUEEN	= 880
+    //pawn
+	HVV = 100,
+	//ROOK
+	TEREG = 500,
+	// KNIGHT
+    MORI = 320,
+	// BISHOP
+	TEMEE = 333,
+	// KING
+	NOYON = 1000000,
+	// QUEEN
+	BERS = 880
 };
 
 #endif

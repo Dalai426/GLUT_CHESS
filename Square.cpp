@@ -3,6 +3,8 @@
 
 #include "Square.h"
 
+/**
+neg nvdiig ilerhiilne */
 Square::Square()
 {
 	occupyingPiece = NULL;
@@ -20,13 +22,18 @@ bool Square::occupiedState()
 
 bool Square::occupySquare(Piece* piece)
 {
-	if(occupiedState()) return false;
+    // yamar neg element baival false bucaana
+	if(occupiedState()){
+            return false;
+	}
+	// element bhgv bol tuhain elemntee onoono
 	else occupyingPiece = piece;
 	return true;
 }
 
 Piece* Square::removeOccupyingPiece()
 {
+    // square deer baigaa shatriig ustgana
 	Piece* removed = occupyingPiece;
 	occupyingPiece = NULL;
 	return removed;
@@ -34,5 +41,6 @@ Piece* Square::removeOccupyingPiece()
 
 Piece* Square::getOccupyingPiece()
 {
+    // nvd deer baigaa shatariiig bucaana
 	return occupyingPiece;
 }

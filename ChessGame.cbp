@@ -42,6 +42,25 @@
 			<Add library="gdi32" />
 			<Add directory="C:/Program Files/CodeBlocks/MinGW/x86_64-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="Board.cpp" />
+		<Unit filename="Board.h" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.h" />
+		<Unit filename="GameStatus.cpp" />
+		<Unit filename="GameStatus.h" />
+		<Unit filename="Gameplay.cpp" />
+		<Unit filename="Gameplay.h" />
+		<Unit filename="Model.cpp" />
+		<Unit filename="Model.h" />
+		<Unit filename="Move.cpp" />
+		<Unit filename="Move.h" />
+		<Unit filename="MoveType.h" />
+		<Unit filename="Piece.cpp" />
+		<Unit filename="Piece.h" />
+		<Unit filename="PieceColor.h" />
+		<Unit filename="PieceType.h" />
+		<Unit filename="Square.cpp" />
+		<Unit filename="Square.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
