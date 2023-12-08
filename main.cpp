@@ -8,11 +8,9 @@ using namespace std;
     #include <GL/glut.h>
 #endif
 
-//Model
 #include "Model.h"
-//Chess Game
 #include "Game.h"
-//Window size and position
+
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 #define WINDOW_POS_X 50
@@ -43,7 +41,7 @@ GLfloat     eyeX = 5.0, eyeY = 0.0, eyeZ = -5.0,
 GLfloat     fovy = 50.0, zNear = 0.1, zFar = 20.0;
 
 /**
-    Variables for light
+    Gerliin tohirgooo
 */
 GLfloat     position[] = {0.0f, 0.0f, 100.0f, 0.0f};
 GLfloat     diffusion[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -54,12 +52,12 @@ GLfloat mat_diffusion[] = {0.8, 0.8, 0.8, 1.0};
 GLfloat mat_specular[] = {0.1, 0.1, 0.1, 1.0};
 
 /**
-    Variables for managing view
+    Delgetsiiin tohirgooo
 */
 GLfloat     screen_ratio, zoomOut = 2;
 
 /**
-    Model Loading
+    Model-ooo achaallah
 */
 Model   Pawn("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Pawn.obj");
 Model   Rook("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Rook.obj");
@@ -67,6 +65,7 @@ Model   Knight("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Knight.o
 Model   Bishop("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Bishop.obj");
 Model   King("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\King.obj");
 Model   Queen("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Queen.obj");
+
 
 /**
     Pre-start
@@ -93,7 +92,7 @@ bool    closeGame = false;
 bool	needPromote = false;
 
 /**
-    Chess board vertices
+    Chess board oroin tsegvvvd
 */
 GLfloat     chessBoard[12][3] = {{-4.0, -4.0, 0.5},
                                 {-4.0,  4.0, 0.5},
@@ -133,6 +132,7 @@ void showWord( int x, int y, string word)
 }
 
 /**
+    bairshil zaagch
 */
 void drawMoveToSquare()
 {
@@ -158,7 +158,7 @@ void drawMoveToSquare()
 }
 
 /**
-    Drawing a chess board using points from array "chessBoard"
+    Chess board zurah heseg
 */
 void drawChessBoard()
 {
@@ -167,7 +167,9 @@ void drawChessBoard()
         glNormal3fv(normal_valid_move);
         glBegin(GL_QUADS);
             glColor3f(1.0, 0.0, 0.0);
-            for(int i=8; i<12; i++) glVertex3fv(chessBoard[i]);
+            for(int i=8; i<12; i++){
+                glVertex3fv(chessBoard[i]);
+            }
         glEnd();
         /**Drawing top of the chess board*/
         glBegin(GL_QUADS);
@@ -257,6 +259,10 @@ void drawChessBoard()
     glColor3f(0, 0, 0);
 }
 
+/**
+nvdnvvd zurah heseg
+*/
+
 void drawBoardSquares()
 {
     float r, c;
@@ -301,7 +307,7 @@ void drawValidMoves()
 {
     if(selected)
     {
-        std::vector<Move> validMoves = chess->getValidMoves(selectedRow, selectedCol);
+        std::vector<Move> validMoves = (*chess).getValidMoves(selectedRow, selectedCol);
         int vec_size = validMoves.size(), row, col;
         for(int id = 0; id < vec_size; id++)
         {
@@ -503,22 +509,15 @@ void displayFunction()
 
     if(inGame)
     {
-        /**
-            Changing view perspective
-        */
+
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         gluPerspective(fovy, screen_ratio, zNear, zoomOut * zFar);
-        /**
-            Drawing model mode
-        */
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
         gluLookAt(zoomOut * eyeX, zoomOut * eyeY, zoomOut * eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
-        /**
-            Draw code here
-        */
+
         if(board_rotating) doRotationBoard(chess->getTurnColor());
         GLfloat ambient_model[] = {0.5, 0.5, 0.5, 1.0};
 
@@ -593,10 +592,10 @@ void specialFunction(int key, int x, int y)
             zoomOut -= 0.1;
             break;
         case GLUT_KEY_LEFT:
-            ang += 5;
+            rotation += 5;
             break;
         case GLUT_KEY_RIGHT:
-            ang -= 5;
+            rotation -= 5;
             break;
         default: break;
     }
