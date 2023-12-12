@@ -50,6 +50,7 @@
 		<Unit filename="GameStatus.h" />
 		<Unit filename="Gameplay.cpp" />
 		<Unit filename="Gameplay.h" />
+		<Unit filename="Header.h" />
 		<Unit filename="Model.cpp" />
 		<Unit filename="Model.h" />
 		<Unit filename="Move.cpp" />
@@ -59,8 +60,11 @@
 		<Unit filename="Piece.h" />
 		<Unit filename="PieceColor.h" />
 		<Unit filename="PieceType.h" />
+		<Unit filename="Room.cpp" />
+		<Unit filename="Room.h" />
 		<Unit filename="Square.cpp" />
 		<Unit filename="Square.h" />
+		<Unit filename="Utils.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

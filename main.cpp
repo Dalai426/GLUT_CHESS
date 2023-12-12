@@ -10,6 +10,8 @@ using namespace std;
 
 #include "Model.h"
 #include "Game.h"
+#include "Room.h"
+#include "Header.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -25,25 +27,23 @@ void keyFunction(unsigned char key, int x, int y);
 void specialFunction(int key, int x, int y);
 
 
+GLuint texture[10];
+
 /**
-    Variables for look at function
-    eye     - position of eye
-    center  - position of the center of view
-    up      - up vertex
+    look at functios parametervvd
 */
 GLfloat     eyeX = 5.0, eyeY = 0.0, eyeZ = -5.0,
             centerX = 0.0, centerY = 0.0, centerZ =0.0,
             upX = 0.0, upY = 0.0, upZ = -1.0;
 
-/**
-    Variables for perspective function
-*/
+
 GLfloat     fovy = 50.0, zNear = 0.1, zFar = 20.0;
 
 /**
     Gerliin tohirgooo
 */
-GLfloat     position[] = {0.0f, 0.0f, 100.0f, 0.0f};
+GLfloat     gerliin_vvsgvvr[] = {0.0f, 0.0f, 2.0f, 0.0f};
+
 GLfloat     diffusion[] = {1.0f, 1.0f, 1.0f, 1.0f};
 GLfloat     normal_board[] = {0.0f, 0.0f, 1.0f};
 GLfloat     normal_valid_move[] = {0.0f, 0.0f, -1.0f};
@@ -76,6 +76,10 @@ bool pressed = false;
     Game Loading
 */
 Game *chess;
+
+Room *room;
+
+
 void newGame();
 
 /**
@@ -130,6 +134,74 @@ void showWord( int x, int y, string word)
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, word[i]); // Print a character on the screen
     }
 }
+
+
+void drawDeleted()
+{
+
+
+    float black_x=0;
+    float white_x=0;
+    float black_y=0;
+    float white_y=0;
+
+    stack<Move> moves = chess->getAllLog();
+    while (!moves.empty()) {
+
+
+        Move currentMove = moves.top();
+        moves.pop();
+
+        if(currentMove.getCapturedPiece()!=NULL){
+            glPushMatrix();
+
+                switch(currentMove.getCapturedPiece()->getColor()){
+                    case PieceColor::WHITE:
+                        glTranslatef(4-white_x,5.5+white_y,0);
+                        glRotatef(90, 0.0f, 0.0f, 1.0f);
+                        glColor3f(0.9f, 0.9f, 0.9f);
+                        if(white_y>=0.7){
+                            white_y=0;
+                            white_x+=0.7;
+                        }else{
+                            white_y+=0.7;
+                        }
+
+                        break;
+                    case PieceColor::BLACK:
+                        glTranslatef(-4+black_x,-5.5-black_y,0);
+                        glRotatef(-90, 0.0f, 0.0f, 1.0f);
+                        glColor3f(0.1f, 0.1f, 0.1f);
+
+                        if(black_y>=0.7){
+                            black_y=0;
+                            black_x+=0.7;
+                        }else{
+                            black_y+=0.7;
+                        }
+
+                        break;
+                }
+
+
+                glScalef(0.01f, 0.01f, 0.01f);
+                switch(currentMove.getCapturedPiece()->getType())
+                {
+                    case PieceType::HVV: HVV.Draw(); break;
+                    case PieceType::TEREG: TEREG.Draw(); break;
+                    case PieceType::MORI: MORI.Draw(); break;
+                    case PieceType::TEMEE: TEMEE.Draw(); break;
+                    case PieceType::BERS: BERS.Draw(); break;
+                    case PieceType::NOYON: NOYON.Draw(); break;
+                }
+
+
+            glPopMatrix();
+        }
+    }
+
+}
+
 
 /**
     bairshil zaagch
@@ -512,6 +584,7 @@ void displayFunction()
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
+
         gluPerspective(fovy, screen_ratio, zNear, zoomOut * zFar);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
@@ -528,9 +601,16 @@ void displayFunction()
 
         glScalef(1.0f, 1.0f, -1.0f);
 
-        glLightfv(GL_LIGHT0, GL_POSITION, position);
+        glLightfv(GL_LIGHT0, GL_POSITION, gerliin_vvsgvvr);
 
         glRotatef(rotation, 0, 0, 1);
+
+
+        glPushMatrix();
+        glColor3f(1,1,1);
+        room->drawBuilding();
+        glPopMatrix();
+
 
         drawChessBoard();
 
@@ -541,6 +621,10 @@ void displayFunction()
         drawMoveToSquare();
 
         drawValidMoves();
+
+        drawDeleted();
+
+
 
 		if(needPromote)
 		{
@@ -629,6 +713,7 @@ void keyFunction(unsigned char key, int x, int y)
                     if(chess->move(selectedRow, selectedCol, moveToRow, moveToCol))
                     {
 						Piece* movedPiece = chess->getPiece(moveToRow, moveToCol);
+
 						if(movedPiece->getType() == PieceType::HVV &&
 							((movedPiece->getColor() == PieceColor::BLACK && moveToRow == chess->getBoard()->MIN_ROW_INDEX)
 							|| moveToRow == chess->getBoard()->MAX_ROW_INDEX))
@@ -702,7 +787,7 @@ void keyFunction(unsigned char key, int x, int y)
 
 void initialize()
 {
-    glClearColor(0.2f, 0.6f, 0.5f, 1.0f);
+    glClearColor(0.9f, 0.9f, 0.9f, 1.0f);
     glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_SMOOTH);
@@ -712,9 +797,12 @@ void initialize()
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
     glEnable(GL_COLOR_MATERIAL);
-
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+
+    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\libr.bmp",0);
+    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\books.bmp",1);
+    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\floor.bmp",2);
 
 }
 
