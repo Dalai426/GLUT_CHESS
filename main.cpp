@@ -238,95 +238,164 @@ void drawChessBoard()
         /**Drawing bottom of the chess board*/
         glNormal3fv(normal_valid_move);
         glBegin(GL_QUADS);
-            glColor3f(1.0, 0.0, 0.0);
+            glColor3f(0.803, 0.522, 0.247);
             for(int i=8; i<12; i++){
                 glVertex3fv(chessBoard[i]);
             }
         glEnd();
         /**Drawing top of the chess board*/
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,2);
         glBegin(GL_QUADS);
             glColor3f(0.55, 0.24, 0.09);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[0]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[4]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[5]);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[1]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,2);
         glBegin(GL_QUADS);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[1]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[5]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[6]);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[2]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,2);
         glBegin(GL_QUADS);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[2]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[6]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[7]);
             glColor3f(0.803, 0.522, 0.247);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[3]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,2);
+
         glBegin(GL_QUADS);
             glColor3f(0.803, 0.522, 0.247);
+              glTexCoord2f(0,0);
             glVertex3fv(chessBoard[3]);
             glColor3f(0.545, 0.271, 0.075);
+              glTexCoord2f(0,1);
             glVertex3fv(chessBoard[7]);
             glColor3f(0.545, 0.271, 0.075);
+              glTexCoord2f(1,1);
             glVertex3fv(chessBoard[4]);
             glColor3f(0.803, 0.522, 0.247);
+              glTexCoord2f(1,0);
             glVertex3fv(chessBoard[0]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
         /**Drawing side of the chess board*/
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,5);
+
         glBegin(GL_QUADS);
             glColor3f(1.0, 0.95, 0.9);
             glColor3f(0.545, 0.271, 0.075);
+               glTexCoord2f(0,0);
             glVertex3fv(chessBoard[4]);
             glColor3f(1.000, 1.000, 1.000);
+               glTexCoord2f(0,1);
             glVertex3fv(chessBoard[8]);
             glColor3f(1.000, 1.000, 1.000);
+               glTexCoord2f(1,1);
             glVertex3fv(chessBoard[9]);
             glColor3f(0.545, 0.271, 0.075);
+               glTexCoord2f(1,0);
             glVertex3fv(chessBoard[5]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,5);
         glBegin(GL_QUADS);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[5]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[9]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[10]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[6]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,5);
         glBegin(GL_QUADS);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[6]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[10]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[11]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[7]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
+
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D,5);
         glBegin(GL_QUADS);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(0,0);
             glVertex3fv(chessBoard[7]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(0,1);
             glVertex3fv(chessBoard[11]);
             glColor3f(1.000, 1.000, 1.000);
+            glTexCoord2f(1,1);
             glVertex3fv(chessBoard[8]);
             glColor3f(0.545, 0.271, 0.075);
+            glTexCoord2f(1,0);
             glVertex3fv(chessBoard[4]);
         glEnd();
+        glDisable(GL_TEXTURE_2D);
     glPopMatrix();
     glColor3f(0, 0, 0);
 }
@@ -817,6 +886,7 @@ void initialize()
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\floor.bmp",2);
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_black.bmp",3);
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_white.bmp",4);
+     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\wood.bmp",5);
 
 
 }

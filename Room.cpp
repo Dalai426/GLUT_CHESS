@@ -305,6 +305,7 @@ glPushMatrix();
     glPopMatrix();
     glDisable(GL_TEXTURE_2D);
 
+    // floor
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,2);
     glPushMatrix();
