@@ -1015,3 +1015,119 @@
 	<stdio.h>
 	<math.h>
 
+1702605052 source:c:\users\user\desktop\glut_chess\board.cpp
+	"Board.h"
+
+1702605052 c:\users\user\desktop\glut_chess\board.h
+	"Square.h"
+
+1702605052 c:\users\user\desktop\glut_chess\square.h
+	"Piece.h"
+
+1702605052 c:\users\user\desktop\glut_chess\piece.h
+	"PieceType.h"
+	"PieceColor.h"
+
+1702605052 c:\users\user\desktop\glut_chess\piecetype.h
+
+1702605052 c:\users\user\desktop\glut_chess\piececolor.h
+
+1702605052 source:c:\users\user\desktop\glut_chess\game.cpp
+	"Game.h"
+
+1702605052 c:\users\user\desktop\glut_chess\game.h
+	<stack>
+	"Piece.h"
+	"Gameplay.h"
+	"Board.h"
+	"GameStatus.h"
+	"Move.h"
+
+1702605052 c:\users\user\desktop\glut_chess\gameplay.h
+	<vector>
+	"Board.h"
+	"Move.h"
+	"Piece.h"
+	"PieceColor.h"
+	"MoveType.h"
+	"GameStatus.h"
+
+1702605052 c:\users\user\desktop\glut_chess\move.h
+	<utility>
+	<cstddef>
+	"Piece.h"
+	"MoveType.h"
+
+1702605052 c:\users\user\desktop\glut_chess\movetype.h
+
+1702605052 c:\users\user\desktop\glut_chess\gamestatus.h
+	"Piece.h"
+	"PieceColor.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\gameplay.cpp
+	<cstddef>
+	<cmath>
+	<iostream>
+	"Gameplay.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\gamestatus.cpp
+	<cstddef>
+	"GameStatus.h"
+
+1702606233 source:c:\users\user\desktop\glut_chess\main.cpp
+	<bits/stdc++.h>
+	<GLUT/glut.h>
+	<GL/freeglut.h>
+	<GL/glut.h>
+	"Model.h"
+	"Game.h"
+	"Room.h"
+	"Header.h"
+
+1702605052 c:\users\user\desktop\glut_chess\model.h
+	<vector>
+	<string>
+
+1702605052 c:\users\user\desktop\glut_chess\room.h
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<windows.h>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+
+1702605052 c:\users\user\desktop\glut_chess\header.h
+	<windows.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+
+1702605052 source:c:\users\user\desktop\glut_chess\model.cpp
+	<fstream>
+	<sstream>
+	<cstring>
+	<cstdlib>
+	<iostream>
+	"Model.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+
+1702605052 source:c:\users\user\desktop\glut_chess\move.cpp
+	"Move.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\piece.cpp
+	"Piece.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\room.cpp
+	"Room.h"
+	"header.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\square.cpp
+	<cstddef>
+	"Square.h"
+
+1702605052 source:c:\users\user\desktop\glut_chess\utils.cpp
+	"header.h"
+

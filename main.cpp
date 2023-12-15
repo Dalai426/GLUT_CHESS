@@ -59,12 +59,12 @@ GLfloat     screen_ratio, zoomOut = 2;
 /**
     Model-ooo achaallah
 */
-Model   HVV("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Pawn.obj");
-Model   TEREG("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Rook.obj");
-Model   MORI("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Knight.obj");
-Model   TEMEE("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Bishop.obj");
-Model   NOYON("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\King.obj");
-Model   BERS("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\Queen.obj");
+Model   HVV("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\Pawn.obj");
+Model   TEREG("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\Rook.obj");
+Model   MORI("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\Knight.obj");
+Model   TEMEE("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\Bishop.obj");
+Model   NOYON("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\King.obj");
+Model   BERS("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\Queen.obj");
 
 
 /**
@@ -353,20 +353,32 @@ void drawBoardSquares()
                     else glColor3f(1.0f, 0.0f, 0.0f);
                 else glColor3f(0.3f, 0.7f, 0.5f);
             }
-            else if((row + col) & 1) glColor3f(1.0, 1.0, 1.0);
-            else glColor3f(0.0, 0.0, 0.0);
+            else if((row + col) & 1){
+                    glColor3f(1.0, 1.0, 1.0);
+                    glEnable(GL_TEXTURE_2D);
+                    glBindTexture(GL_TEXTURE_2D,4);
+            }
+            else{
+                    glEnable(GL_TEXTURE_2D);
+                    glBindTexture(GL_TEXTURE_2D,3);
+                    glColor3f(1.0, 1.0, 1.0);
+            }
+
             glPushMatrix();
                 glTranslatef(r, c, 0.5f);
-                glBegin(GL_TRIANGLES);
+                glBegin(GL_QUADS);
                     glNormal3fv(normal_board);
+                    glTexCoord2f(0,0);
                     glVertex3f(0.0f, 0.0f, 0.0f);
-                    glVertex3f(1.0f, 1.0f, 0.0f);
+                    glTexCoord2f(0,1);
                     glVertex3f(0.0f, 1.0f, 0.0f);
-                    glVertex3f(0.0f, 0.0f, 0.0f);
+                    glTexCoord2f(1,1);
                     glVertex3f(1.0f, 1.0f, 0.0f);
+                    glTexCoord2f(1,0);
                     glVertex3f(1.0f, 0.0f, 0.0f);
                 glEnd();
             glPopMatrix();
+            glDisable(GL_TEXTURE_2D);
         }
     }
     glColor3f(0, 0, 0);
@@ -800,9 +812,12 @@ void initialize()
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
-    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\libr.bmp",0);
-    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\books.bmp",1);
-    LoadBitmap("C:\\Users\\User\\Desktop\\ComGraphic\\ChessGame\\model\\floor.bmp",2);
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\libr.bmp",0);
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\books.bmp",1);
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\floor.bmp",2);
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_black.bmp",3);
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_white.bmp",4);
+
 
 }
 
