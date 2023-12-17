@@ -8,10 +8,12 @@ using namespace std;
     #include <GL/glut.h>
 #endif
 
+#include <string>
 #include "Model.h"
 #include "Game.h"
 #include "Room.h"
 #include "Header.h"
+#include "Connector.h"
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -25,6 +27,7 @@ using namespace std;
 
 void keyFunction(unsigned char key, int x, int y);
 void specialFunction(int key, int x, int y);
+string position="";
 
 
 GLuint texture[10];
@@ -94,6 +97,7 @@ int     rotation = 0;
 bool    check = false, checkMate = false;
 bool    closeGame = false;
 bool	needPromote = false;
+bool playwithBot;
 
 /**
     Chess board oroin tsegvvvd
@@ -133,6 +137,75 @@ void showWord( int x, int y, string word)
     {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, word[i]); // Print a character on the screen
     }
+}
+
+string colRowToPosString(int row, int col){
+
+    string pos="";
+    switch(col){
+    case 1:
+        pos+='a';
+        break;
+    case 2:
+        pos+='b';
+        break;
+    case 3:
+        pos+='c';
+        break;
+    case 4:
+        pos+='d';
+        break;
+    case 5:
+        pos+='e';
+        break;
+    case 6:
+        pos+='f';
+        break;
+    case 7:
+        pos+='g';
+        break;
+    case 8:
+        pos+='h';
+        break;
+    }
+
+    pos+=to_string(row);
+    return pos;
+}
+
+int* posStringToColRow(string pos){
+
+    int* cord = new int[2];
+
+    cord[0]=pos.at(1) - '0';
+
+    switch(pos.at(0)){
+    case 'a':
+        cord[1]=1;
+        break;
+    case 'b':
+        cord[1]=2;
+        break;
+    case 'c':
+        cord[1]=3;
+        break;
+    case 'd':
+        cord[1]=4;
+        break;
+    case 'e':
+        cord[1]=5;
+        break;
+    case 'f':
+        cord[1]=6;
+        break;
+    case 'g':
+        cord[1]=7;
+        break;
+    case 'h':
+        cord[1]=8;
+        break;
+    }
+    return cord;
 }
 
 
@@ -454,7 +527,7 @@ void drawBoardSquares()
 }
 
 /**
-    Draw Valid Moves of Selected Piece
+    Bolomjit nvvdlvvd zurah
 */
 void drawValidMoves()
 {
@@ -473,9 +546,6 @@ void drawValidMoves()
                     break;
                 case MoveType::CAPTURE:
                     glColor3f(1.0f, 0.0f, 0.0f);
-                    break;
-                case MoveType::EN_PASSANT:
-                    glColor3f(0.8f, 1.0f, 0.6f);
                     break;
                 case MoveType::CASTLING:
                     glColor3f(0.196f, 0.804f, 0.196f);
@@ -728,15 +798,42 @@ void displayFunction()
                 showWord(-120, -WINDOW_HEIGHT/2+25, "Yes (O)  or  No (X)");
             }
         }
+
+            if(chess->getTurnColor()== PieceColor::BLACK && playwithBot){
+                            selected=true;
+                            needPromote=false;
+                            checkMate=false;
+                            verify=false;
+                            board_rotating=false;
+
+
+                            string next=getNextMove(position);
+                            if(next.compare("error")!=0){
+                                cout<<next.substr(0,2)<<endl;
+                                cout<<next.substr(2,4)<<endl;
+
+                                int* from = posStringToColRow(next.substr(0,2));
+                                int* to = posStringToColRow(next.substr(2,4));
+                                cout<<from[0]<<" "<<from[1]<<endl;
+                                cout<<to[0]<<" "<<to[1]<<endl;
+
+                                selectedRow=from[0];
+                                selectedCol=from[1];
+                                moveToRow=to[0];
+                                moveToCol=to[1];
+                                keyFunction(' ',1,1);
+                            }else{
+                                cout<<"error"<<endl;
+                            }
+    }
     }
     else
     {
-        showWord(-150, 0, "- - Press N to Start The Game - -");
+        showWord(-250, 0, "Press N : Player vs Bot, Press M : Player1 vs Player2");
     }
 	if(closeGame)glutExit();
 
     glutSwapBuffers();
-
     glutPostRedisplay();
 }
 
@@ -795,6 +892,15 @@ void keyFunction(unsigned char key, int x, int y)
                     {
 						Piece* movedPiece = chess->getPiece(moveToRow, moveToCol);
 
+						cout<<"selected  row:"<<selectedRow<<" col:"<<selectedCol<<endl;
+						cout<<"selected  row:"<<moveToRow<<" col:"<<moveToCol<<endl;
+
+
+						string from=colRowToPosString(selectedRow, selectedCol);
+						string to=colRowToPosString(moveToRow, moveToCol);
+
+						position+=from+to+" ";
+
 						if(movedPiece->getType() == PieceType::HVV &&
 							((movedPiece->getColor() == PieceColor::BLACK && moveToRow == chess->getBoard()->MIN_ROW_INDEX)
 							|| moveToRow == chess->getBoard()->MAX_ROW_INDEX))
@@ -816,12 +922,27 @@ void keyFunction(unsigned char key, int x, int y)
                     }
                 }
             }
+
             break;
         case 'n':
         case 'N':
-            if(!inGame)newGame();
-            else verify = true;
+            if(!inGame){
+                    newGame();
+            }else{
+                verify = true;
+            }
+            playwithBot=true;
             break;
+        case 'M':
+        case 'm':
+            if(!inGame){
+                newGame();
+            }else{
+                verify = true;
+            }
+            playwithBot=false;
+            break;
+
         case 'o': case 'O':
             if(checkMate || verify) {delete chess; newGame(); verify = false;}
             break;
@@ -886,8 +1007,7 @@ void initialize()
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\floor.bmp",2);
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_black.bmp",3);
     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\chess_white.bmp",4);
-     LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\wood.bmp",5);
-
+    LoadBitmap("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\wood.bmp",5);
 
 }
 
@@ -903,6 +1023,8 @@ void newGame()
     check = false;
     checkMate = false;
     updateTurn(chess->getTurnColor());
+    position="";
+    ConnectToEngine("C:\\Users\\User\\Desktop\\GLUT_CHESS\\model\\stockfish.exe");
 }
 
 int main(int argc, char *argv[])

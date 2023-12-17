@@ -40,11 +40,8 @@ bool Gameplay::move(GameStatus* status, Board* board, Move move)
 			board->getSquare(toRow, toCol)->removeOccupyingPiece();
 			return board->getSquare(toRow, toCol)->occupySquare(board->getSquare(fromRow, fromCol)->removeOccupyingPiece());
 		}
-		case MoveType::EN_PASSANT:
-		{
-			board->getSquare(fromRow, toCol)->removeOccupyingPiece();
-			return board->getSquare(toRow, toCol)->occupySquare(board->getSquare(fromRow, fromCol)->removeOccupyingPiece());
-		}
+
+		// tereg bolon noyonii bairiig solih vildel
 		case MoveType::CASTLING:
 		{
 			int rookOriginCol = ((toCol < fromCol) ? board->MIN_COL_INDEX : board->MAX_COL_INDEX);
@@ -124,35 +121,6 @@ std::vector<Move> Gameplay::getPossibleMoves(GameStatus* status, Board* board, P
 							possibleMove.push_back(Move(MoveType::CAPTURE, fromRow, fromCol, row, col, piece, board->getSquare(row, col)->getOccupyingPiece()));
 					}
 				}
-
-				/*
-					EN PASSANT
-				*/
-				if(fromRow == board->MIN_ROW_INDEX + 4)
-				{
-					row = fromRow+1;
-					col = fromCol-1;
-					if(col >= board->MIN_COL_INDEX && !board->getSquare(row, col)->occupiedState())
-					{
-						if(board->getSquare(fromRow, col)->occupiedState())
-						{
-							Piece* capPossibility = board->getSquare(fromRow, col)->getOccupyingPiece();
-							if(capPossibility->getType() == PieceType::HVV && capPossibility->getColor() != piece->getColor() && status->pieceEnPassantable(capPossibility->getColor()) == capPossibility)
-								possibleMove.push_back(Move(MoveType::EN_PASSANT, fromRow, fromCol, row, col, piece, capPossibility));
-						}
-					}
-
-					col = fromCol+1;
-					if(col <= board->MAX_COL_INDEX && !board->getSquare(row, col)->occupiedState())
-					{
-						if(board->getSquare(fromRow, col)->occupiedState())
-						{
-							Piece* capPossibility = board->getSquare(fromRow, col)->getOccupyingPiece();
-							if(capPossibility->getType() == PieceType::HVV && capPossibility->getColor() != piece->getColor() && status->pieceEnPassantable(capPossibility->getColor()) == capPossibility)
-								possibleMove.push_back(Move(MoveType::EN_PASSANT, fromRow, fromCol, row, col, piece, capPossibility));
-						}
-					}
-				}
 			}
 
 			/*BLACK PIECE*/
@@ -202,35 +170,6 @@ std::vector<Move> Gameplay::getPossibleMoves(GameStatus* status, Board* board, P
 					{
 						if(board->getSquare(row, col)->getOccupyingPiece()->getColor() != piece->getColor())
 							possibleMove.push_back(Move(MoveType::CAPTURE, fromRow, fromCol, row, col, piece, board->getSquare(row, col)->getOccupyingPiece()));
-					}
-				}
-
-				/*
-					EN PASSANT
-				*/
-				if(fromRow == board->MAX_ROW_INDEX - 4)
-				{
-					row = fromRow-1;
-					col = fromCol-1;
-					if(col >= board->MIN_COL_INDEX && !board->getSquare(row, col)->occupiedState())
-					{
-						if(board->getSquare(fromRow, col)->occupiedState())
-						{
-							Piece* capPossibility = board->getSquare(fromRow, col)->getOccupyingPiece();
-							if(capPossibility->getType() == PieceType::HVV && capPossibility->getColor() != piece->getColor() && status->pieceEnPassantable(capPossibility->getColor()) == capPossibility)
-								possibleMove.push_back(Move(MoveType::EN_PASSANT, fromRow, fromCol, row, col, piece, capPossibility));
-						}
-					}
-
-					col = fromCol+1;
-					if(col <= board->MAX_COL_INDEX && !board->getSquare(row, col)->occupiedState())
-					{
-						if(board->getSquare(fromRow, col)->occupiedState())
-						{
-							Piece* capPossibility = board->getSquare(fromRow, col)->getOccupyingPiece();
-							if(capPossibility->getType() == PieceType::HVV && capPossibility->getColor() != piece->getColor() && status->pieceEnPassantable(capPossibility->getColor()) == capPossibility)
-								possibleMove.push_back(Move(MoveType::EN_PASSANT, fromRow, fromCol, row, col, piece, capPossibility));
-						}
 					}
 				}
 			}

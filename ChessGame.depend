@@ -1058,13 +1058,13 @@
 	"Piece.h"
 	"MoveType.h"
 
-1702605052 c:\users\user\desktop\glut_chess\movetype.h
+1702738749 c:\users\user\desktop\glut_chess\movetype.h
 
 1702605052 c:\users\user\desktop\glut_chess\gamestatus.h
 	"Piece.h"
 	"PieceColor.h"
 
-1702605052 source:c:\users\user\desktop\glut_chess\gameplay.cpp
+1702738755 source:c:\users\user\desktop\glut_chess\gameplay.cpp
 	<cstddef>
 	<cmath>
 	<iostream>
@@ -1074,15 +1074,17 @@
 	<cstddef>
 	"GameStatus.h"
 
-1702608136 source:c:\users\user\desktop\glut_chess\main.cpp
+1702811176 source:c:\users\user\desktop\glut_chess\main.cpp
 	<bits/stdc++.h>
 	<GLUT/glut.h>
 	<GL/freeglut.h>
 	<GL/glut.h>
+	<string>
 	"Model.h"
 	"Game.h"
 	"Room.h"
 	"Header.h"
+	"Connector.h"
 
 1702605052 c:\users\user\desktop\glut_chess\model.h
 	<vector>
@@ -1130,4 +1132,10 @@
 
 1702605052 source:c:\users\user\desktop\glut_chess\utils.cpp
 	"header.h"
+
+1702811005 c:\users\user\desktop\glut_chess\connector.h
+	<windows.h>
+	<stdio.h>
+	<iostream>
+	<string>
 

@@ -5,7 +5,6 @@ enum class MoveType : int
 {
 	NORMAL,
 	CAPTURE,
-	EN_PASSANT,
 	CASTLING
 };
 
