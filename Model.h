@@ -7,10 +7,8 @@
 class Model
 {
 private:
-    //Attribute
     std::vector<float> position_texture_normal;
     int sz;
-    //Function
     std::vector<std::string> splitString(std::string str, char delimiter);
     float getFloat(std::string input);
     int getInt(std::string input);

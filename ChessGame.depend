@@ -1074,7 +1074,7 @@
 	<cstddef>
 	"GameStatus.h"
 
-1702811176 source:c:\users\user\desktop\glut_chess\main.cpp
+1702819153 source:c:\users\user\desktop\glut_chess\main.cpp
 	<bits/stdc++.h>
 	<GLUT/glut.h>
 	<GL/freeglut.h>
@@ -1086,7 +1086,7 @@
 	"Header.h"
 	"Connector.h"
 
-1702605052 c:\users\user\desktop\glut_chess\model.h
+1702817310 c:\users\user\desktop\glut_chess\model.h
 	<vector>
 	<string>
 
@@ -1133,7 +1133,7 @@
 1702605052 source:c:\users\user\desktop\glut_chess\utils.cpp
 	"header.h"
 
-1702811005 c:\users\user\desktop\glut_chess\connector.h
+1702811355 c:\users\user\desktop\glut_chess\connector.h
 	<windows.h>
 	<stdio.h>
 	<iostream>

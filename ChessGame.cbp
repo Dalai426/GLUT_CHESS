@@ -44,6 +44,7 @@
 		</Linker>
 		<Unit filename="Board.cpp" />
 		<Unit filename="Board.h" />
+		<Unit filename="Connector.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="GameStatus.cpp" />

@@ -739,10 +739,12 @@ void displayFunction()
         gluPerspective(fovy, screen_ratio, zNear, zoomOut * zFar);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
+
         gluLookAt(zoomOut * eyeX, zoomOut * eyeY, zoomOut * eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
 
 
         if(board_rotating) doRotationBoard(chess->getTurnColor());
+
         GLfloat ambient_model[] = {0.5, 0.5, 0.5, 1.0};
 
         glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambient_model);
@@ -825,7 +827,7 @@ void displayFunction()
                             }else{
                                 cout<<"error"<<endl;
                             }
-    }
+        }
     }
     else
     {
@@ -999,6 +1001,8 @@ void initialize()
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
     glEnable(GL_COLOR_MATERIAL);
+
+
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
 
